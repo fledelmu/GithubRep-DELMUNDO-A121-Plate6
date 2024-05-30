@@ -23,7 +23,7 @@ public class TaskEight {
 
         System.out.print("Enter number of vertices for Graph 2: ");
         int graph2Vert = userInput.nextInt();
-        int[][] graph2 = new int[graph1Vert][graph1Vert];
+        int[][] graph2 = new int[graph2Vert][graph2Vert];
 
         System.out.print("Enter number of edges for Graph 2: ");
         int graph2Edge = userInput.nextInt();
