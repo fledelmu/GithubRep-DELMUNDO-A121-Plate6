@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class TaskOne {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
@@ -19,30 +20,30 @@ public class TaskOne {
             adjacencyList.get(v).add(u);
         }
 
-        int count = 0;
         List<Integer> check = new ArrayList<>();
-        for (Map.Entry<Integer, List<Integer>> entry : adjacencyList.entrySet()) {
-            int vertex = entry.getKey();
-            boolean connected = true;
-            for (List<Integer> adjacent : adjacencyList.values()) {
-                if (!adjacent.contains(vertex)) {
-                    connected = false;
+        for (int vertex : adjacencyList.keySet()) {
+            boolean isConnectedToAll = true;
+            for (int otherVertex : adjacencyList.keySet()) {
+                if (otherVertex != vertex && !adjacencyList.get(vertex).contains(otherVertex)) {
+                    isConnectedToAll = false;
                     break;
                 }
             }
-            if (!connected) {
-                count++;
-            } else {
+            if (isConnectedToAll) {
                 check.add(vertex);
             }
         }
-
-        count /= 2;
-        if(check.size() == adjacencyList.size()){
-            System.out.print("Graph is connected.");
-        }else{
-            System.out.print("Graph is disconnected.\nNumber of connections: "+count);
+        
+        int count = 0;
+        for (List<Integer> adjacency : adjacencyList.values()) {
+            count += adjacency.size();
         }
-
+        
+        count /= 2;
+        if (check.size() == adjacencyList.keySet().size()) {
+            System.out.print("Graph is connected.");
+        } else {
+            System.out.print("Graph is disconnected.\nNumber of connections: " + count);
+        }
     }
 }
