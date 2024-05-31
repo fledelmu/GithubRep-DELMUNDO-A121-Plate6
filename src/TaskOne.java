@@ -22,23 +22,22 @@ public class TaskOne {
 
         int count = 0;
         List<Integer> check = new ArrayList<>();
-        for(Map.Entry<Integer,List<Integer>> value : adjacencyList.entrySet()){
-            int vertex = value.getKey();
+        for (Map.Entry<Integer, List<Integer>> entry : adjacencyList.entrySet()) {
+            int vertex = entry.getKey();
             boolean connected = true;
-            for (List<Integer> adjacent : adjacencyList.values()){
-                if(!adjacent.contains(vertex)){
+            for (Integer adjacent : entry.getValue()) {
+                if (!adjacencyList.get(adjacent).contains(vertex)) {
                     connected = false;
                     break;
                 }
             }
-            count /= 2;
-            if (!connected){
+            if (!connected) {
                 count++;
-            }else{
+            } else {
                 check.add(vertex);
             }
-
         }
+        count /= 2;
 
         for (List<Integer> adjacency : adjacencyList.values()) {
             count += adjacency.size();
