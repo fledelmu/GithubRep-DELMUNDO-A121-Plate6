@@ -1,3 +1,4 @@
+// There was an issue with the check part so I modified the code logic I have already passed the plates at this point so the code might be different from the plates.
 import java.util.*;
 
 public class TaskOne {
